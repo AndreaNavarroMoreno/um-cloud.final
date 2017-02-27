@@ -10,6 +10,7 @@ RUN apt-get $APT_XTRA install -y supervisor
 COPY php-mysql /var/www/html/php-mysql
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY db-init.sh /usr/local/bin/db-init.sh
+RUN chmod +x /usr/local/bin/db-init.sh
 
 EXPOSE 80
 RUN mkdir -p /var/lock/apache2
