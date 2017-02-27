@@ -54,7 +54,7 @@ docker build -t ${APP_TAGS} .
 echo "Listo: ${APP_TAGS}"
 
 
-${registry:="localhost"}
+: ${registry:="localhost"}
 set -x
 docker tag ${APP_TAGS} localhost:5000/${APP_TAGS}
 docker push localhost:5000/${APP_TAGS}

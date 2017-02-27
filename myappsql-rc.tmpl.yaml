@@ -19,7 +19,7 @@ spec:
           image: mysql:5.5
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: f00b4r # [0]
+              value: 123123
           ports:
             - containerPort: 3306
         - name: mybluemix
@@ -27,20 +27,10 @@ spec:
           imagePullPolicy: IfNotPresent 
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: f00b4r # [0]
+              value: 123123
           ports:
             - containerPort: 80
 
-# [0]
-# con kubernetes mas nuevos, puede ser:
-#          valueFrom:
-#            secretKeyRef:
-#              name: my-secrets-store
-#              key: mypass
-#
-# , previamente ejecutando:
-#   $ kubectl create secret generic my-secrets-store --from-literal=mypass=f00b4r
-#
 ---
 apiVersion: v1
 kind: Service
