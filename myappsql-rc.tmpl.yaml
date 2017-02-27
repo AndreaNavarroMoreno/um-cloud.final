@@ -19,7 +19,7 @@ spec:
           image: mysql:5.5
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: 123123
+              value: contrasenia
           ports:
             - containerPort: 3306
         - name: mybluemix
@@ -27,7 +27,7 @@ spec:
           imagePullPolicy: IfNotPresent 
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: 123123
+              value: contrasenia
           ports:
             - containerPort: 80
 
