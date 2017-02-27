@@ -1,10 +1,20 @@
 #!/bin/bash
 
-echo "Descargando Dockerfile y yaml temporal:"
 
-git clone https://github.com/AndreaNavarroMoreno/um-cloud.final
+echo "Instalando paquetes necesarios"
 
-cd um-cloud.final/
+#sudo apt-get update
+sudo apt-get install -y virtualbox
+sudo apt-get install -y curl git-core
+sudo apt-get install -y jq
+
+echo "Instalando docker"
+sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+sudo apt-add-repository 'deb https://apt.dockerproject.org/repo ubuntu-xenial main'
+sudo apt-get update
+sudo apt-get install -y docker-engine
+
+
 
 echo "Instalando kubectl"
 (set -x; test -x /usr/local/bin/kubectl || curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl)
@@ -18,6 +28,10 @@ systemctl start docker
 
 echo "Iniciando minikube"
 minikube start
+
+echo "Descargando Dockerfile y yaml temporal:"
+git clone https://github.com/AndreaNavarroMoreno/um-cloud.final
+cd um-cloud.final/
 
 echo "Descargando imagen docker de ubuntu"
 docker pull ubuntu:16.04
